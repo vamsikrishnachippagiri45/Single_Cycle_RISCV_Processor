@@ -33,21 +33,4 @@ IM_wrapper IM(
     .BRAM_PORTA_0_dout(instruction_out),
     .BRAM_PORTA_0_we(1'b0)
     );
-    
-/*reg [31:0]Instruction_Memory[0:16383];
-integer i;
-always @(negedge reset)
-begin
-    for(i=0;i<16383;i=i+1)
-        begin
-        Instruction_Memory[i] = 32'h00000000 ;
-        end
-     
-     // $readmemh("D:\Vivado projects\Single_cycle_RISCV_processor\inst.mem",Instruction_Memory);
-        Instruction_Memory[0] = 32'h000000A3 ;
-        Instruction_Memory[1] = 32'h000070B3 ;
-        Instruction_Memory[2] = 32'h00100103 ;
-        Instruction_Memory[3] = 32'h00000423 ;
-        Instruction_Memory[4] = 32'h00000863 ;     
-end*/
 endmodule
