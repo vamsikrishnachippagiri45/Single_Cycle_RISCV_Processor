@@ -18,52 +18,12 @@ ALU Operations: Addition, subtraction, AND, OR.
 Modular Design: Separate Verilog modules for ALU, Control Unit, Register File, Instruction Memory, and Data Memory.
 Testbenches: For simulation and verification.
 
-Instruction Classes and Formats:
 This processor implements four instruction classes, each with a distinct RISC-V instruction format:
 
-R-type (Arithmetic Instructions)
+1. R-type (Arithmetic Instructions): These use opcode 51₁₀ (0x33) and have three register operands: rs1, rs2 (sources), and rd (destination). The ALU operation is determined by the funct3 and funct7 fields. The implemented instructions are ADD, SUB, AND, and OR.
 
-Opcode: 51₁₀ (0x33)
+2. I-type (Load Instructions): These use opcode 3₁₀ (0x03). The register rs1 acts as a base register, and a 12-bit immediate offset is added to it to form the memory address. The result is stored in destination register rd. The implemented instruction is LW.
 
-Operands: rs1, rs2 (sources), rd (destination)
+3. S-type (Store Instructions): These use opcode 35₁₀ (0x23). The base address comes from rs1, and the value to be stored comes from rs2. The 12-bit immediate field (split into two parts) is added to rs1 to compute the memory address. The implemented instruction is SW.
 
-funct3 + funct7 fields determine ALU operation
-
-Implemented Instructions:
-ADD rd, rs1, rs2  and
-SUB rd, rs1, rs2  and 
-AND rd, rs1, rs2  and
-OR rd, rs1, rs2
-
-I-type (Load Instructions)
-
-Opcode: 3₁₀ (0x03)
-
-Operands: rs1 (base register), rd (destination), 12-bit immediate (offset)
-
-Effective Address = rs1 + immediate
-
-Implemented Instruction:
-LW rd, offset(rs1)
-
-S-type (Store Instructions)
-
-Opcode: 35₁₀ (0x23)
-
-Operands: rs1 (base register), rs2 (source), 12-bit immediate (split)
-
-Effective Address = rs1 + immediate
-
-Implemented Instruction:
-SW rs2, offset(rs1)
-
-SB-type (Conditional Branch Instructions)
-
-Opcode: 99₁₀ (0x63)
-
-Operands: rs1, rs2 (registers compared), 12-bit immediate (branch offset)
-
-Target Address = PC + (sign-extended immediate << 1)
-
-Implemented Instruction:
-BEQ rs1, rs2, label
+4. SB-type (Conditional Branch Instructions): These use opcode 99₁₀ (0x63). The registers rs1 and rs2 are compared, and if the condition is met, the branch target address is computed as PC + (sign-extended immediate << 1). The implemented instruction is BEQ.
