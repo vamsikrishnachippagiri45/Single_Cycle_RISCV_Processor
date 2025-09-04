@@ -30,7 +30,6 @@ Operands: rs1, rs2 (sources), rd (destination)
 funct3 + funct7 fields determine ALU operation
 
 Implemented Instructions:
-
 ADD rd, rs1, rs2  and
 SUB rd, rs1, rs2  and 
 AND rd, rs1, rs2  and
