@@ -4,7 +4,6 @@ This project is a single-cycle RISC-V processor designed in Verilog. It supports
 Features
 
 Architecture: Single-cycle (all instructions execute in one clock cycle).
-
 Instruction Set (7 instructions across 4 classes):
 
 R-type: ADD, SUB, AND, OR
@@ -16,13 +15,10 @@ S-type: SW
 SB-type: BEQ
 
 ALU Operations: Addition, subtraction, AND, OR.
-
 Modular Design: Separate Verilog modules for ALU, Control Unit, Register File, Instruction Memory, and Data Memory.
-
 Testbenches: For simulation and verification.
 
-🔹 Instruction Classes and Formats
-
+Instruction Classes and Formats:
 This processor implements four instruction classes, each with a distinct RISC-V instruction format:
 
 R-type (Arithmetic Instructions)
@@ -35,12 +31,9 @@ funct3 + funct7 fields determine ALU operation
 
 Implemented Instructions:
 
-ADD rd, rs1, rs2
-
-SUB rd, rs1, rs2
-
-AND rd, rs1, rs2
-
+ADD rd, rs1, rs2  and
+SUB rd, rs1, rs2  and 
+AND rd, rs1, rs2  and
 OR rd, rs1, rs2
 
 I-type (Load Instructions)
@@ -52,7 +45,6 @@ Operands: rs1 (base register), rd (destination), 12-bit immediate (offset)
 Effective Address = rs1 + immediate
 
 Implemented Instruction:
-
 LW rd, offset(rs1)
 
 S-type (Store Instructions)
@@ -64,7 +56,6 @@ Operands: rs1 (base register), rs2 (source), 12-bit immediate (split)
 Effective Address = rs1 + immediate
 
 Implemented Instruction:
-
 SW rs2, offset(rs1)
 
 SB-type (Conditional Branch Instructions)
@@ -76,5 +67,4 @@ Operands: rs1, rs2 (registers compared), 12-bit immediate (branch offset)
 Target Address = PC + (sign-extended immediate << 1)
 
 Implemented Instruction:
-
 BEQ rs1, rs2, label
