@@ -4,10 +4,7 @@ This project is a single-cycle RISC-V processor designed in Verilog. It supports
 Features
 Architecture: Single-cycle (all instructions execute in one clock cycle).
 Instruction Set (7 instructions across 4 classes):
-R-type: ADD, SUB, AND, OR
-I-type: ADDI, LW
-S-type: SW
-SB-type: BEQ
+R-type: ADD, SUB, AND, OR   -   I-type: ADDI, LW    -    S-type: SW    -    SB-type: BEQ
 
 ALU Operations: Addition, subtraction, AND, OR.
 Modular Design: Separate Verilog modules for ALU, Control Unit, Register File, Instruction Memory, and Data Memory.
