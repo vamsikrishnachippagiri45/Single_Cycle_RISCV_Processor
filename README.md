@@ -19,4 +19,6 @@ This processor implements four instruction classes, each with a distinct RISC-V 
 
 4. SB-type (Conditional Branch Instructions): These use opcode 99₁₀ (0x63). The registers rs1 and rs2 are compared, and if the condition is met, the branch target address is computed as PC + (sign-extended immediate << 1). The implemented instruction is BEQ.
 
+
+Below figure is Architecture of Single Cycle RISCV processor:
 <img width="950" height="710" alt="image" src="https://github.com/user-attachments/assets/7405b95b-e59c-4621-921f-ff7ff874cc5e" />
