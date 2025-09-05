@@ -20,16 +20,24 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Data_memory(mem_read,mem_write,address,write_data,read_data);
-input mem_read,mem_write ;
+module Data_memory(reset,clk,mem_read,mem_write,address,write_data,read_data);
+input mem_write,mem_read,clk,reset ;
 input [13:0]address ;
 input [31:0]write_data ;
 output reg [31:0]read_data ;
-reg [31:0] data_mem [0:16383];
 
-always @(*)
-begin
-    if(mem_read) read_data <= data_mem[address];
-    else if(mem_write) begin data_mem[address]<=write_data; read_data<=32'h00000000; end
-end
+ reg [31:0] data_mem [0:16383];  // 16K x 32-bit = 64KB
+integer i;
+        always @(negedge reset)
+        begin
+            for(i=0;i<16383;i=i+1)
+                begin
+                data_mem[i] = 32'h00000000 ;
+                end 
+        end
+    
+        always @(posedge clk) begin
+             if(mem_read) read_data <= data_mem[address];
+             else if(mem_write) begin data_mem[address]<=write_data; read_data<=32'h00000000; end
+        end
 endmodule
