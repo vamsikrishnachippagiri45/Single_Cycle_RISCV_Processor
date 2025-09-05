@@ -21,8 +21,8 @@
 
 
 module tb_top_module();
-reg clk,reset;
-Processor_top_module inst(.clk(clk),.reset(reset));
+wire alu_out;
+Processor_top_module inst(.clk(clk),.reset(reset),.alu_out(alu_out));
 
 initial  
 begin 
@@ -30,15 +30,12 @@ clk = 1'b0;
 forever #5 clk = ~clk; 
 end
 
-
-
-
 initial
 begin
 reset = 1'b1;
 #50
 reset = 1'b0;
-#40;
+#80;
 $finish;
 end
 endmodule
